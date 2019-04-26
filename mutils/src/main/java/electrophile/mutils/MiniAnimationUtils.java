@@ -34,18 +34,18 @@ public class MiniAnimationUtils {
     }
 
     public void fadeOutAnimation(View view) {
-        final Animation bounce = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.fade_out);
-        view.setOnClickListener(view1 -> view1.startAnimation(bounce));
+        final Animation fade_out = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.fade_out);
+        view.setOnClickListener(view1 -> view1.startAnimation(fade_out));
     }
 
     public void moveAnimation(View view) {
-        final Animation bounce = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.move);
-        view.setOnClickListener(view1 -> view1.startAnimation(bounce));
+        final Animation move = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.move);
+        view.setOnClickListener(view1 -> view1.startAnimation(move));
     }
 
     public void rotateAnimation(View view) {
-        final Animation bounce = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.rotate);
-        view.setOnClickListener(view1 -> view1.startAnimation(bounce));
+        final Animation rotate = android.view.animation.AnimationUtils.loadAnimation(context, R.anim.rotate);
+        view.setOnClickListener(view1 -> view1.startAnimation(rotate));
     }
 
     public void setTransitionYAnimationOnViewGroup(ViewGroup root) {
