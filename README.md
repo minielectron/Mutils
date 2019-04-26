@@ -1,12 +1,19 @@
 # utils
 This library provides the basic utility in day to day android application development.
 Some examples are ....
+
 1.DateTimeUtils
+
 2.MiniAnimationUtils
+
 3.MiniDialogUtils
+
 4.FullScreenBottomSheetDialogFragment
+
 5.MiniColorUtils
+
 6.MiniNetworkingUtils
+
 7.MiniValidationUtils ... etc
 
 How to Add in you android Project ?
