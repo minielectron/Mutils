@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
 
-public class DialogUtils {
+public class MiniDialogUtils {
 
     private static AlertDialog alertDialog =  null;
     /*
