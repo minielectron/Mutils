@@ -2,7 +2,6 @@ package electrophile.mutils;
 
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.provider.Settings;
 import android.support.v7.app.AlertDialog;
@@ -10,8 +9,8 @@ import android.support.v7.app.AlertDialog;
 public class MiniDialogUtils {
 
     private static AlertDialog alertDialog =  null;
-    /*
-    * @param Context provide as Activity.this
+    /**
+    * @param context , provide as Activity.this
     * @return none
     * */
 
@@ -36,4 +35,5 @@ public class MiniDialogUtils {
         alertDialog.setCancelable(false);
         alertDialog.setCanceledOnTouchOutside(false);
     }
+
 }

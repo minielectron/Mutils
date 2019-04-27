@@ -2,7 +2,9 @@ package electrophile.mutils;
 
 import android.graphics.Color;
 
-public class MiniColorsUtils {
+import electrophile.mutils.fragments.FullScreenBottomSheetDialogFragment;
+
+public class MiniColorsUtils  {
 
     private static int color(String color) {
         return Color.parseColor(color);
