@@ -28,6 +28,8 @@ import java.lang.reflect.Method;
  */
 
 
+//Resource : https://stackoverflow.com/a/33684486/5163725
+
 public class MiniNetworkingUtils {
     /**
      * The absence of a connection type.
