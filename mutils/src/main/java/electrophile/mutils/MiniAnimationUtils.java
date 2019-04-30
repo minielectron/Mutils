@@ -1,8 +1,8 @@
 package electrophile.mutils;
 
 import android.animation.ObjectAnimator;
+import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.CardView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -179,4 +179,20 @@ public class MiniAnimationUtils {
             symmetric = !symmetric;
         }
     }
+
+    public void slideActvityFromTopToBottomExitTransition(Activity activity){
+        activity.overridePendingTransition(R.anim.slide_enter_from_top,R.anim.slide_exit_to_bottom);
+    }
+
+    public void slideActvityFromBottomToTopExitTransition(Activity activity){
+        activity.overridePendingTransition(R.anim.slide_enter_from_bottom,R.anim.slide_exit_to_top);
+    }
+    public void slideActvityFromLeftToRightExitTransition(Activity activity){
+        activity.overridePendingTransition(R.anim.slide_enter_from_left,R.anim.slide_exit_from_right);
+    }
+
+    public void slideActvityFromRightToLeftExitTransition(Activity activity){
+        activity.overridePendingTransition(R.anim.slide_enter_from_right,R.anim.slide_exit_from_left);
+    }
+
 }
