@@ -37,3 +37,11 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.minielectron:utils:1.0.1'
 	}
+step 3 :add support for java 8
+	android{
+		.....
+	compileOptions {
+        	sourceCompatibility JavaVersion.VERSION_1_8
+        	targetCompatibility JavaVersion.VERSION_1_8
+    	}
+    }
