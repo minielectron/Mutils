@@ -1,8 +1,15 @@
 package electrophile.mutils;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
@@ -75,4 +82,53 @@ public class MiniPermissionUtils {
         if (permissions.length != 0)
             ActivityCompat.requestPermissions(activity, permissions, requestCode);
     }
+
+    public void onRequestResult(){
+//        if (requestCode == PHONE_STATE_REQUEST_CODE) {
+//            setProgress(false);
+//            if (grantResults.length > 0
+//                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                getIemiNumber();
+//            } else if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
+//                // Should we show an explanation?
+//                if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), Manifest.permission.READ_PHONE_STATE)) {
+//
+//                    showRationaleDialog();
+//                    //Show permission explanation dialog...
+//                } else {
+//                    //Never ask again selected, or device policy prohibits the app from having that permission.
+//                    //So, disable that feature, or fall back to another situation...
+//                    showRationaleDialog();
+//                }
+//            }
+    }
+
+    private void showRationaleDialog() {
+//        AlertDialog dialog = new AlertDialog.Builder(getContext())
+////                            .setTitle("Permission")
+//                .setMessage("Allow to read IMEI number to use the application")
+//
+//                // Specifying a listener allows you to take an action before dismissing the dialog.
+//                // The dialog is automatically dismissed when a dialog button is clicked.
+//                .setPositiveButton("Allow", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        // Continue with delete operation
+//                        Intent intent = new Intent();
+//                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                        Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
+//                        intent.setData(uri);
+//                        startActivity(intent);
+//                    }
+//                })
+//                // A null listener allows the button to dismiss the dialog and take no further action.
+//                .setNegativeButton("Deny", null)
+////                            .setIcon(R.drawable.call_top_layer)
+//                .create();
+//        dialog.setOnShowListener(arg0 -> {
+//            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setTypeface(Typeface.DEFAULT_BOLD);
+//            dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setTypeface(Typeface.DEFAULT);
+//        });
+//        dialog.show();
+    }
+
 }

@@ -3,6 +3,7 @@ package electrophile.mutils;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -13,16 +14,16 @@ import java.util.Random;
 
 /**
  * Copyright 2019 Prakash Sharma
- *
+ * <p>
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal in
  * the Software without restriction, including without limitation the rights to
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
  * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
- *
+ * <p>
  * The above copyright notice and this permission notice shall be included in all copies or
  * substantial portions of the Software.
- *
+ * <p>
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
  * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
  * AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES
@@ -81,118 +82,127 @@ public class MiniAnimationUtils {
     }
 
     public void setTransitionYAnimationOnViewGroup(ViewGroup root) {
-        int count = root.getChildCount();
-        float offset = context.getResources().getDimensionPixelSize(R.dimen.offset_y);
-        Interpolator interpolator =
-                android.view.animation.AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
-        // loop over the children setting an increasing translation y but the same animation
-        // duration + interpolation
-        for (int i = 0; i < count; i++) {
-            View view = root.getChildAt(i);
-            view.setVisibility(View.VISIBLE);
-            view.setTranslationY(offset);
-            view.setAlpha(0.67f);
-            // then animate back to natural position
-            view.animate()
-                    .translationY(0f)
-                    .alpha(1f)
-                    .setInterpolator(interpolator)
-                    .setDuration(400L)
-                    .start();
-            // increase the offset distance for the next view
-            offset *= 1.5f;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int count = root.getChildCount();
+            float offset = context.getResources().getDimensionPixelSize(R.dimen.offset_y);
+            Interpolator interpolator =
+                    android.view.animation.AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
+            // loop over the children setting an increasing translation y but the same animation
+            // duration + interpolation
+            for (int i = 0; i < count; i++) {
+                View view = root.getChildAt(i);
+                view.setVisibility(View.VISIBLE);
+                view.setTranslationY(offset);
+                view.setAlpha(0.67f);
+                // then animate back to natural position
+                view.animate()
+                        .translationY(0f)
+                        .alpha(1f)
+                        .setInterpolator(interpolator)
+                        .setDuration(400L)
+                        .start();
+                // increase the offset distance for the next view
+                offset *= 1.5f;
+            }
         }
     }
 
     public void setTransitionXAnimationOnViewGroup(ViewGroup root) {
-        int count = root.getChildCount();
-        float offset = context.getResources().getDimensionPixelSize(R.dimen.offset_y);
-        Interpolator interpolator =
-                android.view.animation.AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
-        // loop over the children setting an increasing translation y but the same animation
-        // duration + interpolation
-        for (int i = 0; i < count; i++) {
-            View view = root.getChildAt(i);
-            view.setVisibility(View.VISIBLE);
-            view.setTranslationX(offset);
-            view.setAlpha(0.65f);
-            // then animate back to natural position
-            view.animate()
-                    .translationX(0f)
-                    .alpha(1f)
-                    .setInterpolator(interpolator)
-                    .setDuration(400L)
-                    .start();
-            // increase the offset distance for the next view
-            offset *= 1.5f;
-        }
-    }
-
-    public void setTransitionChaoticAnimationOnViewGroup(ViewGroup viewGroup){
-        float maxWidthOffset = 2f * context.getResources().getDisplayMetrics().widthPixels;
-        float maxHeightOffset = 2f * context.getResources().getDisplayMetrics().heightPixels;
-        Interpolator interpolator =
-                AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
-        Random random = new Random();
-        int count = viewGroup.getChildCount();
-        for (int i = 0; i < count; i++) {
-            View view = viewGroup.getChildAt(i);
-            view.setVisibility(View.VISIBLE);
-            view.setAlpha(0.85f);
-            float xOffset = random.nextFloat() * maxWidthOffset;
-            if (random.nextBoolean()) {
-                xOffset *= -1;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            int count = root.getChildCount();
+            float offset = context.getResources().getDimensionPixelSize(R.dimen.offset_y);
+            Interpolator interpolator =
+                    android.view.animation.AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
+            // loop over the children setting an increasing translation y but the same animation
+            // duration + interpolation
+            for (int i = 0; i < count; i++) {
+                View view = root.getChildAt(i);
+                view.setVisibility(View.VISIBLE);
+                view.setTranslationX(offset);
+                view.setAlpha(0.65f);
+                // then animate back to natural position
+                view.animate()
+                        .translationX(0f)
+                        .alpha(1f)
+                        .setInterpolator(interpolator)
+                        .setDuration(400L)
+                        .start();
+                // increase the offset distance for the next view
+                offset *= 1.5f;
             }
-            view.setTranslationX(xOffset);
-            float yOffset = random.nextFloat() * maxHeightOffset;
-            if (random.nextBoolean()) {
-                yOffset *= -1;
+        }
+    }
+
+    public void setTransitionChaoticAnimationOnViewGroup(ViewGroup viewGroup) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            float maxWidthOffset = 2f * context.getResources().getDisplayMetrics().widthPixels;
+            float maxHeightOffset = 2f * context.getResources().getDisplayMetrics().heightPixels;
+            Interpolator interpolator =  AnimationUtils.loadInterpolator(context, android.R.interpolator.linear_out_slow_in);
+            Random random = new Random();
+            int count = viewGroup.getChildCount();
+            for (int i = 0; i < count; i++) {
+                View view = viewGroup.getChildAt(i);
+                view.setVisibility(View.VISIBLE);
+                view.setAlpha(0.85f);
+                float xOffset = random.nextFloat() * maxWidthOffset;
+                if (random.nextBoolean()) {
+                    xOffset *= -1;
+                }
+                view.setTranslationX(xOffset);
+                float yOffset = random.nextFloat() * maxHeightOffset;
+                if (random.nextBoolean()) {
+                    yOffset *= -1;
+                }
+                view.setTranslationY(yOffset);
+
+                // now animate them back into their natural position
+                view.animate()
+                        .translationY(0f)
+                        .translationX(0f)
+                        .alpha(1f)
+                        .setInterpolator(interpolator)
+                        .setDuration(1000)
+                        .start();
             }
-            view.setTranslationY(yOffset);
-
-            // now animate them back into their natural position
-            view.animate()
-                    .translationY(0f)
-                    .translationX(0f)
-                    .alpha(1f)
-                    .setInterpolator(interpolator)
-                    .setDuration(1000)
-                    .start();
         }
+
     }
 
-    public void changeSize(View view) {
-        Interpolator interpolator = AnimationUtils.loadInterpolator(context, android.R
-                .interpolator.fast_out_slow_in);
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, View.SCALE_X, (small ? LARGE_SCALE : 1f));
-        scaleX.setInterpolator(interpolator);
-        scaleX.setDuration(symmetric ? 600L : 200L);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, View.SCALE_Y, (small ? LARGE_SCALE : 1f));
-        scaleY.setInterpolator(interpolator);
-        scaleY.setDuration(600L);
-        scaleX.start();
-        scaleY.start();
+        public void changeSize (View view){
 
-        // toggle the state so that we switch between large/small and symmetric/asymmetric
-        small = !small;
-        if (small) {
-            symmetric = !symmetric;
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Interpolator interpolator = AnimationUtils.loadInterpolator(context, android.R
+                        .interpolator.fast_out_slow_in);
+                ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, View.SCALE_X, (small ? LARGE_SCALE : 1f));
+                scaleX.setInterpolator(interpolator);
+                scaleX.setDuration(symmetric ? 600L : 200L);
+                ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, View.SCALE_Y, (small ? LARGE_SCALE : 1f));
+                scaleY.setInterpolator(interpolator);
+                scaleY.setDuration(600L);
+                scaleX.start();
+                scaleY.start();
+
+                // toggle the state so that we switch between large/small and symmetric/asymmetric
+                small = !small;
+                if (small) {
+                    symmetric = !symmetric;
+                }
+            }
         }
-    }
 
-    public void slideActvityFromTopToBottomExitTransition(Activity activity){
-        activity.overridePendingTransition(R.anim.slide_enter_from_top,R.anim.slide_exit_to_bottom);
-    }
+        public void slideActvityFromTopToBottomExitTransition (Activity activity){
+            activity.overridePendingTransition(R.anim.slide_enter_from_top, R.anim.slide_exit_to_bottom);
+        }
 
-    public void slideActvityFromBottomToTopExitTransition(Activity activity){
-        activity.overridePendingTransition(R.anim.slide_enter_from_bottom,R.anim.slide_exit_to_top);
-    }
-    public void slideActvityFromLeftToRightExitTransition(Activity activity){
-        activity.overridePendingTransition(R.anim.slide_enter_from_left,R.anim.slide_exit_from_right);
-    }
+        public void slideActvityFromBottomToTopExitTransition (Activity activity){
+            activity.overridePendingTransition(R.anim.slide_enter_from_bottom, R.anim.slide_exit_to_top);
+        }
+        public void slideActvityFromLeftToRightExitTransition (Activity activity){
+            activity.overridePendingTransition(R.anim.slide_enter_from_left, R.anim.slide_exit_from_right);
+        }
 
-    public void slideActvityFromRightToLeftExitTransition(Activity activity){
-        activity.overridePendingTransition(R.anim.slide_enter_from_right,R.anim.slide_exit_from_left);
-    }
+        public void slideActvityFromRightToLeftExitTransition (Activity activity){
+            activity.overridePendingTransition(R.anim.slide_enter_from_right, R.anim.slide_exit_from_left);
+        }
 
-}
+    }
